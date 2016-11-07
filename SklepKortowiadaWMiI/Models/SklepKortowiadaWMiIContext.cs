@@ -19,6 +19,10 @@ namespace SklepKortowiadaWMiI.Models
         {
         }
 
-        public System.Data.Entity.DbSet<SklepKortowiadaWMiI.Models.Contact> Contacts { get; set; }
+        public System.Data.Entity.DbSet<SklepKortowiadaWMiI.Models.Product> Products { get; set; }
+
+        public System.Data.Entity.DbSet<SklepKortowiadaWMiI.Models.OrderDetail> OrderDetails { get; set; }
+
+        public System.Data.Entity.DbSet<SklepKortowiadaWMiI.Models.Order> Orders { get; set; }
     }
 }
