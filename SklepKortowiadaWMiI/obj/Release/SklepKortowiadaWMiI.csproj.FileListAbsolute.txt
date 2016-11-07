@@ -100,3 +100,4 @@ C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaW
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Release\SklepKortowiadaWMiI.csproj.GenerateResource.Cache
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Release\SklepKortowiadaWMiI.dll
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Release\SklepKortowiadaWMiI.pdb
+C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Release\SklepKortowiadaWMiI.csprojResolveAssemblyReference.cache
