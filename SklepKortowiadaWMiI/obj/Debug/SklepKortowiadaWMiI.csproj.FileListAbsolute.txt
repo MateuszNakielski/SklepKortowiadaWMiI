@@ -100,5 +100,5 @@ C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaW
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\bin\System.Net.Http.Formatting.xml
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\bin\System.Web.Http.xml
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\bin\System.Web.Http.WebHost.xml
-C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Debug\SklepKortowiadaWMiI.Migrations.Initial.resources
+C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Debug\SklepKortowiadaWMiI.Migrations.initial.resources
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Debug\SklepKortowiadaWMiI.csproj.GenerateResource.Cache

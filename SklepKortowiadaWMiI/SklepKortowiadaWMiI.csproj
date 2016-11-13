@@ -138,27 +138,35 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\OrderDetailsController.cs" />
-    <Compile Include="Controllers\Products1Controller.cs" />
+    <Compile Include="Controllers\Orders1Controller.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\TShirtsController.cs" />
+    <Compile Include="DTO\OrderDTO.cs" />
+    <Compile Include="DTO\ProductDTO.cs" />
+    <Compile Include="DTO\TShirtDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611071711553_Initial.cs" />
-    <Compile Include="Migrations\201611071711553_Initial.Designer.cs">
-      <DependentUpon>201611071711553_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201611130823054_ initial.cs" />
+    <Compile Include="Migrations\201611130823054_ initial.Designer.cs">
+      <DependentUpon>201611130823054_ initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SklepKortowiadaWMiIContext.cs" />
+    <Compile Include="Models\TShirt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="ClassDiagram1.cd" />
+    <Content Include="ClassDiagram2.cd" />
+    <Content Include="ClassDiagram3.cd" />
+    <Content Include="ClassDiagram4.cd" />
     <None Include="Properties\PublishProfiles\SklepKortowiadaWMiI.pubxml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -179,6 +187,17 @@
     <Content Include="Views\OrderDetails\Details.cshtml" />
     <Content Include="Views\OrderDetails\Edit.cshtml" />
     <Content Include="Views\OrderDetails\Index.cshtml" />
+    <Content Include="Views\TShirts\Create.cshtml" />
+    <Content Include="Views\TShirts\Delete.cshtml" />
+    <Content Include="Views\TShirts\Details.cshtml" />
+    <Content Include="Views\TShirts\Edit.cshtml" />
+    <Content Include="Views\TShirts\Index.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -189,8 +208,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611071711553_Initial.resx">
-      <DependentUpon>201611071711553_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611130823054_ initial.resx">
+      <DependentUpon>201611130823054_ initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

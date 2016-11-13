@@ -2,126 +2,104 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+using System.Web.Http;
+using System.Web.Http.Description;
 using SklepKortowiadaWMiI.Models;
+using SklepKortowiadaWMiI.DTO;
 
 namespace SklepKortowiadaWMiI.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : ApiController
     {
         private SklepKortowiadaWMiIContext db = new SklepKortowiadaWMiIContext();
 
-        // GET: Products
-        public ActionResult Index()
+        public IEnumerable<ProductDTO> GetProducts()
         {
-            return View(db.Products.ToList());
+            return db.Products.
+                AsEnumerable<Product>().
+                Select(p => ProductDTO.ToProductDTO(p));
         }
 
-        // GET: Products/Details/5
-        public ActionResult Details(int? id)
+        [ResponseType(typeof(ProductDTO))]
+        public IHttpActionResult GetProduct(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Product product = db.Products.Find(id);
             if (product == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
-            return View(product);
+
+            return Ok(ProductDTO.ToProductDTO(product));
         }
 
-        // GET: Products/Create
-        public ActionResult Create()
+        [ResponseType(typeof(ProductDTO))]
+        public IHttpActionResult PostProduct(ProductDTO p)
         {
-            return View();
-        }
-
-        // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Price")] Product product)
-        {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return BadRequest(ModelState);
             }
 
-            return View(product);
+            db.Products.Add(ProductDTO.FromProductDTO(p));
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = p.Id }, p);
         }
 
-        // GET: Products/Edit/5
-        public ActionResult Edit(int? id)
+        [ResponseType(typeof(ProductDTO))]
+        public IHttpActionResult DeleteProduct(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Product product = db.Products.Find(id);
             if (product == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
-            return View(product);
-        }
-
-        // POST: Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Price")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(product);
-        }
-
-        // GET: Products/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
-
-        // POST: Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Product product = db.Products.Find(id);
             db.Products.Remove(product);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Ok(ProductDTO.ToProductDTO(product));
         }
 
-        protected override void Dispose(bool disposing)
+        [ResponseType(typeof(ProductDTO))]
+        public IHttpActionResult PutProduct(int id, ProductDTO p)
         {
-            if (disposing)
+            if (!ModelState.IsValid)
             {
-                db.Dispose();
+                return BadRequest(ModelState);
             }
-            base.Dispose(disposing);
+
+            if (id != p.Id)
+            {
+                return BadRequest();
+            }
+
+            Product newProduct = ProductDTO.FromProductDTO(p);
+
+            db.Entry(newProduct).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProductExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok(ProductDTO.ToProductDTO(newProduct));
+        }
+
+        private bool ProductExists(int id)
+        {
+            return db.Products.Count(e => e.Id == id) > 0;
         }
     }
 }
