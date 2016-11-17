@@ -13,7 +13,7 @@ namespace SklepKortowiadaWMiI.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201611130823054_ initial"; }
+            get { return "201611161102333_initial"; }
         }
         
         string IMigrationMetadata.Source

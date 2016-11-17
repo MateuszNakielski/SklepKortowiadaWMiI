@@ -21,6 +21,5 @@ namespace SklepKortowiadaWMiI.Models
         public String Barcode { get; set; }
         public String Faculty { get; set; }
         public String Mode { get; set; }
-        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

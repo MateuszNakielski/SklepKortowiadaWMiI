@@ -32,83 +32,95 @@ namespace SklepKortowiadaWMiI.Controllers
             return Ok(order);
         }
 
-    //    [ResponseType(typeof(OrderDTO))]
-    //    public IHttpActionResult PutOrder(int id, OrderDTO order)
-    //    {
-    //        if (!ModelState.IsValid)
-    //        {
-    //            return BadRequest(ModelState);
-    //        }
+        [ResponseType(typeof(OrderDTO))]
+        public IHttpActionResult PutOrder(int id, OrderDTO orderDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            Order order = OrderDTO.FromOrderDTO(orderDTO);
+            if (id != orderDTO.Id)
+            {
+                return BadRequest();
+            }
 
-    //        if (id != order.Id)
-    //        {
-    //            return BadRequest();
-    //        }
+            db.Entry(order).State = EntityState.Modified;
 
-    //        db.Entry(order).State = EntityState.Modified;
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!OrderExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-    //        try
-    //        {
-    //            db.SaveChanges();
-    //        }
-    //        catch (DbUpdateConcurrencyException)
-    //        {
-    //            if (!OrderExists(id))
-    //            {
-    //                return NotFound();
-    //            }
-    //            else
-    //            {
-    //                throw;
-    //            }
-    //        }
+            return Ok(orderDTO);
+        }
 
-    //        return StatusCode(HttpStatusCode.NoContent);
-    //    }
+        // POST: api/Orders1
+        [ResponseType(typeof(OrderDTO))]
+        public IHttpActionResult PostOrder(OrderDTO orderDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            Order order = OrderDTO.FromOrderDTO(orderDTO);
+            db.Orders.Add(order);
+            db.SaveChanges();
 
-    //    // POST: api/Orders1
-    //    [ResponseType(typeof(Order))]
-    //    public IHttpActionResult PostOrder(Order order)
-    //    {
-    //        if (!ModelState.IsValid)
-    //        {
-    //            return BadRequest(ModelState);
-    //        }
+            return Ok(orderDTO);
+        }
+        [Route("api/Orders/{id}")]
+        [HttpPost]
+        [ResponseType(typeof(int))]
+        public IHttpActionResult AddOrderDetail(int id, OrderDetailDTO orderDetailDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-    //        db.Orders.Add(order);
-    //        db.SaveChanges();
+            Order order = db.Orders.Find(id);
+            if (order == null)
+                return NotFound();
+            OrderDetail orderDetail = OrderDetailDTO.FromOrderDetailDTO(orderDetailDTO, id);
+            
+            
+            db.OrderDetails.Add(orderDetail);
+            db.SaveChanges();
+            return Ok(OrderDTO.ToOrderDTO(order));
+        }
 
-    //        return CreatedAtRoute("DefaultApi", new { id = order.Id }, order);
-    //    }
+        // DELETE: api/Orders1/5
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult DeleteOrder(int id)
+        {
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return NotFound();
+            }
 
-    //    // DELETE: api/Orders1/5
-    //    [ResponseType(typeof(Order))]
-    //    public IHttpActionResult DeleteOrder(int id)
-    //    {
-    //        Order order = db.Orders.Find(id);
-    //        if (order == null)
-    //        {
-    //            return NotFound();
-    //        }
+            db.Orders.Remove(order);
+            db.SaveChanges();
 
-    //        db.Orders.Remove(order);
-    //        db.SaveChanges();
+            return Ok(order);
+        }
 
-    //        return Ok(order);
-    //    }
 
-    //    protected override void Dispose(bool disposing)
-    //    {
-    //        if (disposing)
-    //        {
-    //            db.Dispose();
-    //        }
-    //        base.Dispose(disposing);
-    //    }
-
-    //    private bool OrderExists(int id)
-    //    {
-    //        return db.Orders.Count(e => e.Id == id) > 0;
-    //    }
-    //}
-}
+        private bool OrderExists(int id)
+        {
+            return db.Orders.Count(e => e.Id == id) > 0;
+        }
+    }
+    }

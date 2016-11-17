@@ -26,18 +26,16 @@ namespace SklepKortowiadaWMiI.DTO
             };
         }
 
-        public static OrderDetail FromOrderDetailDTO(OrderDetailDTO o)
+        public static OrderDetail FromOrderDetailDTO(OrderDetailDTO o, int orderId)
         {
             SklepKortowiadaWMiIContext db = new SklepKortowiadaWMiIContext();
 
             return new OrderDetail()
             {
-                OrderId = o.OrderId,
-                ProductId = o.ProductId,
                 Quantity = o.Quantity,
-                Order = db.Orders.Find(o.OrderId),
-                Product = db.Products.Find(o.ProductId),
                 Number = o.Number,
+                ProductId = o.ProductId,
+                OrderId = orderId,
                 Id = o.Id
             };
         }

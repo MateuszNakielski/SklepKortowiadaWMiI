@@ -12,6 +12,7 @@ namespace SklepKortowiadaWMiI.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Number = c.Int(nullable: false),
                         Quantity = c.Int(nullable: false),
                         OrderId = c.Int(nullable: false),
                         ProductId = c.Int(nullable: false),

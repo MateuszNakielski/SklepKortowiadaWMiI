@@ -21,10 +21,8 @@ namespace SklepKortowiadaWMiI.DTO
 
         public static OrderDTO ToOrderDTO(Order o)
         {
-            List<OrderDetailDTO> orderDetails = new List<OrderDetailDTO>();
-
-            foreach (OrderDetail od in o.OrderDetails)
-                orderDetails.Add(OrderDetailDTO.ToOrderDetailDTO(od));
+            SklepKortowiadaWMiIContext db = new SklepKortowiadaWMiIContext();
+            List<OrderDetailDTO> orderDetails = db.OrderDetails.AsEnumerable<OrderDetail>().Select(p => OrderDetailDTO.ToOrderDetailDTO(p)).Where(p => p.Id == o.Id).AsEnumerable<OrderDetailDTO>().ToList();
             return new OrderDTO()
             {
                 Id = o.Id,
@@ -42,10 +40,6 @@ namespace SklepKortowiadaWMiI.DTO
 
         public static Order FromOrderDTO(OrderDTO o)
         {
-            List<OrderDetail> orderDetails = new List<OrderDetail>();
-
-            foreach (OrderDetailDTO od in o.Details)
-                orderDetails.Add(OrderDetailDTO.FromOrderDetailDTO(od));
 
             return new Order()
             {
@@ -54,7 +48,6 @@ namespace SklepKortowiadaWMiI.DTO
                 Id = o.Id,
                 Mode = o.Mode,
                 Name = o.Name,
-                OrderDetails = orderDetails,
                 Paid = o.Paid,
                 Received = o.Received,
                 SecondName = o.SecondName,
