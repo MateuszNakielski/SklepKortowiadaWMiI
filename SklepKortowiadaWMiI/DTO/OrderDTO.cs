@@ -22,7 +22,7 @@ namespace SklepKortowiadaWMiI.DTO
         public static OrderDTO ToOrderDTO(Order o)
         {
             SklepKortowiadaWMiIContext db = new SklepKortowiadaWMiIContext();
-            List<OrderDetailDTO> orderDetails = db.OrderDetails.AsEnumerable<OrderDetail>().Select(p => OrderDetailDTO.ToOrderDetailDTO(p)).Where(p => p.Id == o.Id).AsEnumerable<OrderDetailDTO>().ToList();
+            List<OrderDetailDTO> orderDetails = db.OrderDetails.AsEnumerable<OrderDetail>().Select(p => OrderDetailDTO.ToOrderDetailDTO(p)).Where(p => p.OrderId == o.Id).AsEnumerable<OrderDetailDTO>().ToList();
             return new OrderDTO()
             {
                 Id = o.Id,
