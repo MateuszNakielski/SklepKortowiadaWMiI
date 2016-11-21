@@ -8,77 +8,58 @@ using System.Web.Http.Description;
 using SklepKortowiadaWMiI.Models;
 using SklepKortowiadaWMiI.DTO;
 using System.Collections.Generic;
+using SklepKortowiadaWMiI.Services;
 
 namespace SklepKortowiadaWMiI.Controllers
 {
     public class OrdersController : ApiController
     {
-        private SklepKortowiadaWMiIContext db = new SklepKortowiadaWMiIContext();
+        IOrderService orderService;
+
+        public OrdersController(IOrderService orderService)
+        {
+            this.orderService = orderService;
+        }
 
         public IEnumerable<OrderDTO> GetOrders()
         {
-            return db.Orders.AsEnumerable<Order>().Select(o => OrderDTO.ToOrderDTO(o));
+            return orderService.GetAllOrders().Select(o => OrderDTO.ToOrderDTO(o));
         }
 
         [ResponseType(typeof(OrderDTO))]
         public IHttpActionResult GetOrder(int id)
         {
-            OrderDTO order = OrderDTO.ToOrderDTO(db.Orders.Find(id));
+            Order order = orderService.GetOneOrderById(id);
             if (order == null)
             {
                 return NotFound();
             }
-
-            return Ok(order);
+            return Ok(OrderDTO.ToOrderDTO(order));
         }
 
         [ResponseType(typeof(OrderDTO))]
-        public IHttpActionResult PutOrder(int id, OrderDTO orderDTO)
+        public IHttpActionResult PutOrder(int id, OrderDTO o)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            Order order = OrderDTO.FromOrderDTO(orderDTO);
-            if (id != orderDTO.Id)
-            {
+            Order order = orderService.UpdateOrderById(id, OrderDTO.FromOrderDTO(o));
+            if (order == null)
                 return BadRequest();
-            }
-
-            db.Entry(order).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrderExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return Ok(orderDTO);
+            return Ok(OrderDTO.ToOrderDTO(order));
         }
 
         // POST: api/Orders1
         [ResponseType(typeof(OrderDTO))]
-        public IHttpActionResult PostOrder(OrderDTO orderDTO)
+        public IHttpActionResult PostOrder(OrderDTO o)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            Order order = OrderDTO.FromOrderDTO(orderDTO);
-            db.Orders.Add(order);
-            db.SaveChanges();
-
-            return Ok(orderDTO);
+            Order order = orderService.AddOrder(OrderDTO.FromOrderDTO(o));
+            return Ok(OrderDTO.ToOrderDTO(order));
         }
         [Route("api/Orders/{id}")]
         [HttpPost]
@@ -89,15 +70,7 @@ namespace SklepKortowiadaWMiI.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            Order order = db.Orders.Find(id);
-            if (order == null)
-                return NotFound();
-            OrderDetail orderDetail = OrderDetailDTO.FromOrderDetailDTO(orderDetailDTO, id);
-            
-            
-            db.OrderDetails.Add(orderDetail);
-            db.SaveChanges();
+            Order order = orderService.AddOrderDetail(id, OrderDetailDTO.FromOrderDetailDTO(orderDetailDTO, id));
             return Ok(OrderDTO.ToOrderDTO(order));
         }
 
@@ -105,22 +78,10 @@ namespace SklepKortowiadaWMiI.Controllers
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(int id)
         {
-            Order order = db.Orders.Find(id);
+            Order order = orderService.DeleteOrderById(id);
             if (order == null)
-            {
                 return NotFound();
-            }
-
-            db.Orders.Remove(order);
-            db.SaveChanges();
-
-            return Ok(order);
-        }
-
-
-        private bool OrderExists(int id)
-        {
-            return db.Orders.Count(e => e.Id == id) > 0;
+            return Ok(OrderDTO.ToOrderDTO(order));
         }
     }
-    }
+}

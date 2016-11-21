@@ -7,13 +7,13 @@ namespace SklepKortowiadaWMiI.Migrations
     {
         public override void Up()
         {
-            DropForeignKey("dbo.OrderDetails", "ProductId", "dbo.Products");
-            DropForeignKey("dbo.OrderDetails", "OrderId", "dbo.Orders");
-            DropIndex("dbo.OrderDetails", new[] { "ProductId" });
-            DropIndex("dbo.OrderDetails", new[] { "OrderId" });
-            DropTable("dbo.Products");
-            DropTable("dbo.Orders");
-            DropTable("dbo.OrderDetails");
+            //DropForeignKey("dbo.OrderDetails", "ProductId", "dbo.Products");
+            //DropForeignKey("dbo.OrderDetails", "OrderId", "dbo.Orders");
+            //DropIndex("dbo.OrderDetails", new[] { "ProductId" });
+            //DropIndex("dbo.OrderDetails", new[] { "OrderId" });
+            //DropTable("dbo.Products");
+            //DropTable("dbo.Orders");
+            //DropTable("dbo.OrderDetails");
             CreateTable(
                 "dbo.OrderDetails",
                 c => new
