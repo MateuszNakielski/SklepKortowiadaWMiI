@@ -41,7 +41,9 @@ namespace SklepKortowiadaWMiI.Services.Implementations
 
         public Order DeleteOrderDetailByNumber(int orderId, int n, OrderDetail od)
         {
-            throw new NotImplementedException();
+            OrderDetail orderDetail = db.OrderDetails.Where(o => o.OrderId == orderId).Where(o => o.Number == n).Single();
+            db.OrderDetails.Remove(orderDetail);
+            return db.Orders.Find(orderId);
         }
 
         public IEnumerable<Order> GetAllOrders()
@@ -62,6 +64,12 @@ namespace SklepKortowiadaWMiI.Services.Implementations
             db.Entry(o).State = EntityState.Modified;
             db.SaveChanges();
             return o;
+        }
+
+        public Order GetOneOrderByBarCode(string b)
+        {
+            return db.Orders.Where(o => o.Barcode.Equals(b)).First();
+            
         }
     }
 }
