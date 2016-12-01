@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="SklepKortowiadaWMiIContext-Web.config Connection String" description="SklepKortowiadaWMiIContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SklepKortowiadaWMiIContext-20161106140646; Integrated Security=True; MultipleActiveResultSets=True;" tags="SqlConnectionString">
+  <parameter name="SklepKortowiadaWMiIContext-Web.config Connection String" description="SklepKortowiadaWMiIContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SklepKortowiadaWMiIContext-20161106140647; Integrated Security=True; MultipleActiveResultSets=True;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\mtnak\\Documents\\GitHubVisualStudio\\SklepKortowiadaWMiI\\SklepKortowiadaWMiI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SklepKortowiadaWMiIContext']/@connectionString" />
   </parameter>
   <parameter name="SklepKortowiadaWMiIContext_DatabasePublish-Web.config Connection String" description="SklepKortowiadaWMiIContext_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="SklepKortowiadaWMiIContext_DatabasePublish.ConnetionString" tags="SqlConnectionString">

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SklepKortowiadaWMiI.Models;
+using SklepKortowiadaWMiI.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,16 @@ namespace SklepKortowiadaWMiI.WebPage
 {
     public class HomeController : Controller
     {
+        IProductService productService;
+
+        public HomeController( IProductService productService)
+        {
+            this.productService = productService;
+        } 
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            return View(productService.GetAllProducts().Take(5).ToList<Product>());
         }
     }
 }

@@ -1,0 +1,15 @@
+﻿@using SklepKortowiadaWMiI.WebModels
+@model Cart
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@foreach(var line in Model.Lines)
+{
+    <ul>
+        <li>@line.Product.Name</li>
+    </ul>
+}
+
+

@@ -186,6 +186,8 @@
     <Compile Include="Services\Implementations\ProductService.cs" />
     <Compile Include="Services\IOrderService.cs" />
     <Compile Include="Services\IProductService.cs" />
+    <Compile Include="WebModels\Cart.cs" />
+    <Compile Include="WebPage\CartController.cs" />
     <Compile Include="WebPage\HomeController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -235,12 +237,14 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612011930101_initial.resx">
       <DependentUpon>201612011930101_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

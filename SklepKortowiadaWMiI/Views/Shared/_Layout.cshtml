@@ -4,20 +4,21 @@
     <title>Sklep RWSS WMiI | Strona główna</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/megamenu.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/style.css" rel='stylesheet' type='text/css' />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/flexslider.css" rel='stylesheet' type='text/css' />
+       
+
+</head>
+<body>
     <script type="text/javascript" src="~/Content/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="~/Content/megamenu.js"></script>
+    <script defer src="~/Content/jquery.flexslider.js"></script>
     <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <script defer src="~/Content/jquery.flexslider.js"></script>
     <script type="text/javascript">
-								$(function(){
-								  SyntaxHighlighter.all();
-								});
 								$(window).load(function(){
 								  $('.flexslider').flexslider({
 									animation: "slide",
@@ -27,8 +28,7 @@
 								  });
 								});
     </script>
-</head>
-<body>
+    
     <div class="wrap">
         <div class="container">
             <div class="header_top">
@@ -74,7 +74,6 @@
                         </div>
                         <ul class="bag">
                             <a href="koszyk.html"><i class="bag_left"> </i></a>
-                            <a href="koszyk.html"><li class="bag_right"><p>20.00 zł</p> </li></a>
                             <div class="clearfix"> </div>
                         </ul>
                         <div class="clearfix"> </div>
@@ -82,7 +81,30 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-
+            <div class="grid_1">
+                <div class="col-md-3 banner_left">
+                    <img src="http://tymson.pl/sklep/images/pic1.png" class="img-responsive" alt="" />
+                    <div class="banner_desc">
+                        <h1>Męska koszulka</h1>
+                        <h2>Kortowiada 2016</h2>
+                        <h5>25 zł</h5>
+                        <a href="produkt.html" class="btn1 btn4 btn-1 btn1-1b">Dodaj >></a>
+                    </div>
+                </div>
+                <div class="col-md-9 banner_right">
+                    <!-- FlexSlider -->
+                    <section class="slider">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <li><img src="http://tymson.pl/sklep/images/banner.jpg" alt="" /></li>
+                                <li><img src="http://tymson.pl/sklep/images/banner1.jpg" alt="" /></li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- FlexSlider -->
+                </div>
+                <div class="clearfix"></div>
+            </div>
             <div class="content">
                 <div class="content_box">
 
@@ -120,7 +142,6 @@
             
                 
 
-            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-            <script src="~/Scripts/bootstrap.min.js"></script>
+    
 </body>
 </html>

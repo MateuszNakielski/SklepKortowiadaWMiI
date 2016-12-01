@@ -1,3 +1,25 @@
-﻿
-<h2>Index</h2>
+﻿@using SklepKortowiadaWMiI.Models
 
+@model List<Product>
+
+<ul class="grid_2">
+    @foreach (var p in Model)
+    {
+            <li>
+                <img src="@p.PictureUrl" class="img-responsive" alt="" />
+                <span class="btn5">@p.Price zł</span>
+                <p>@p.Name</p>
+                @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+                    @Html.Hidden("productId", p.Id)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    @Html.Hidden("quantity", 1)
+                    <input type="submit" class="btn btn-success" value="Dodaj" />
+                }
+            </li>
+    }
+    
+    
+    <div class="clearfix"> </div>
+</ul>
+<div class="clearfix"></div>
