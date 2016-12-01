@@ -36,38 +36,5 @@ namespace SklepKortowiadaWMiI.Controllers
             return Ok(ProductDTO.ToProductDTO(product));
         }
 
-        [ResponseType(typeof(ProductDTO))]
-        public IHttpActionResult PostProduct(ProductDTO p)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            Product pResult = productService.AddProduct(ProductDTO.FromProductDTO(p));
-            return Ok(ProductDTO.ToProductDTO(pResult));
-        }
-
-        [ResponseType(typeof(ProductDTO))]
-        public IHttpActionResult DeleteProduct(int id)
-        {
-            Product product = productService.DeleteProductById(id);
-            if (product == null)
-                return NotFound();
-            return Ok(ProductDTO.ToProductDTO(product));
-        }
-
-        [ResponseType(typeof(ProductDTO))]
-        public IHttpActionResult PutProduct(int id, ProductDTO p)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            Product product = productService.UpdateProductById(id,ProductDTO.FromProductDTO(p));
-            if (product == null)
-                return BadRequest();
-            return Ok(ProductDTO.ToProductDTO(product));
-        }
     }
 }

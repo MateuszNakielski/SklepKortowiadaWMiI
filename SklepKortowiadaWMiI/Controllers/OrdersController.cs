@@ -63,7 +63,7 @@ namespace SklepKortowiadaWMiI.Controllers
         }
         [Route("api/Orders/{id}")]
         [HttpPost]
-        [ResponseType(typeof(int))]
+        [ResponseType(typeof(OrderDTO))]
         public IHttpActionResult AddOrderDetail(int id, OrderDetailDTO orderDetailDTO)
         {
             if (!ModelState.IsValid)
@@ -75,7 +75,7 @@ namespace SklepKortowiadaWMiI.Controllers
         }
 
         // DELETE: api/Orders1/5
-        [ResponseType(typeof(Order))]
+        [ResponseType(typeof(OrderDTO))]
         public IHttpActionResult DeleteOrder(int id)
         {
             Order order = orderService.DeleteOrderById(id);
@@ -83,5 +83,26 @@ namespace SklepKortowiadaWMiI.Controllers
                 return NotFound();
             return Ok(OrderDTO.ToOrderDTO(order));
         }
+
+        [Route("api/Orders/{barCode}")]
+        [HttpGet]
+        [ResponseType(typeof(OrderDTO))]
+        public IHttpActionResult GetOrderByBarCode(string barCode)
+        {
+            Order order = orderService.GetOneOrderByBarCode(barCode);
+            if (order == null)
+                return NotFound();
+            return Ok(OrderDTO.ToOrderDTO(order));
+        }
+
+        [Route("api/Orders/{id}")]
+        [HttpGet]
+        [ResponseType(typeof(OrderDTO))]
+        public IHttpActionResult DeleteDetailOrder(int id, int number)
+        {
+            Order order = orderService.DeleteOrderDetailByNumber(id, number);
+            return Ok(OrderDTO.ToOrderDTO(order));
+        }
+
     }
 }

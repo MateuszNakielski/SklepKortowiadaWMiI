@@ -39,7 +39,7 @@ namespace SklepKortowiadaWMiI.Services.Implementations
             return order;
         }
 
-        public Order DeleteOrderDetailByNumber(int orderId, int n, OrderDetail od)
+        public Order DeleteOrderDetailByNumber(int orderId, int n)
         {
             OrderDetail orderDetail = db.OrderDetails.Where(o => o.OrderId == orderId).Where(o => o.Number == n).Single();
             db.OrderDetails.Remove(orderDetail);

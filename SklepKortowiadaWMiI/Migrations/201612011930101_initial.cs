@@ -7,13 +7,6 @@ namespace SklepKortowiadaWMiI.Migrations
     {
         public override void Up()
         {
-            //DropForeignKey("dbo.OrderDetails", "ProductId", "dbo.Products");
-            //DropForeignKey("dbo.OrderDetails", "OrderId", "dbo.Orders");
-            //DropIndex("dbo.OrderDetails", new[] { "ProductId" });
-            //DropIndex("dbo.OrderDetails", new[] { "OrderId" });
-            //DropTable("dbo.Products");
-            //DropTable("dbo.Orders");
-            //DropTable("dbo.OrderDetails");
             CreateTable(
                 "dbo.OrderDetails",
                 c => new
@@ -55,9 +48,6 @@ namespace SklepKortowiadaWMiI.Migrations
                         Description = c.String(),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         PictureUrl = c.String(),
-                        Size = c.String(),
-                        Sex = c.String(),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
             

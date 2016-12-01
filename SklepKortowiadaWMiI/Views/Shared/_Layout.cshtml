@@ -34,7 +34,7 @@
             <div class="header_top">
                 <div class="col-sm-9 h_menu4">
                     <ul class="megamenu skyblue">
-                        <li class="active grid"><a class="color8" href="index.html">Strona główna</a></li>
+                        <li class="active grid"><a class="color8" href="/">Strona główna</a></li>
                         <li><a class="color6" href="męskie.html">Koszulki męskie</a></li>
                         <li><a class="color6" href="404.html">Koszulki damskie</a></li>
                         <li><a class="color6" href="404.html">Gadżety</a></li>
@@ -63,7 +63,7 @@
             <div class="header_bootm">
                 <div class="col-sm-4 span_1">
                     <div class="logo">
-                        <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                        <a href="index.html"><img src="http://tymson.pl/sklep/images/logo.png" alt="" /></a>
                     </div>
                 </div>
                 <div class="col-sm-8 row_2">
@@ -82,16 +82,43 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
+
+            <div class="content">
+                <div class="content_box">
+
+                    @RenderBody()
+
+                    <div class="footer_top">
+                        
+                        <!-- start span_of_2 -->
+                        <div class="contact_form">
+                            <h2>Formularz kontaktowy</h2>
+                            <form>
+                                <div class="row_5">
+                                    <input type="text" class="text" value="Imię" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Imię';}">
+                                    <input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left:20px">
+                                    <input type="text" class="text" value="Temat" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Temat';}" style="margin-left:20px">
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="row_6">
+                                    <textarea value="Wiadomość:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Wiadomość';}">Wiadomość:</textarea>
+                                </div>
+                                <input name="submit" type="submit" id="submit" value="Wyślij wiadomość">
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <div class="copy">
+                            <p><h6>© 2016 Styl <a href="http://w3layouts.com/">W3layouts</a> | Edycja: TT </h6></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
-            <div class="container body-content">
-                @RenderBody()
-                <hr />
-                <footer>
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-                </footer>
-            </div>
+            
+                
 
             <script src="~/Scripts/jquery-1.10.2.min.js"></script>
             <script src="~/Scripts/bootstrap.min.js"></script>

@@ -54,7 +54,7 @@ body a{
 	-webkit-appearance: none;
 }
 .search input[type="submit"] {
-	background: url('../images/search.png') no-repeat 24px 10px #16aae1;
+	background: url('http://tymson.pl/sklep/images/search.png') no-repeat 24px 10px #16aae1;
 	padding: 12.5px 38px;
 	border: none;
 	cursor: pointer;
@@ -62,7 +62,7 @@ body a{
 	outline: none;
 }
 .search input[type="submit"]:hover{
-	background: url('../images/search.png') no-repeat 24px 10px #232756;
+	background: url('http://tymson.pl/sklep/images/search.png') no-repeat 24px 10px #232756;
 }
 ul.bag{
 	padding:0;
@@ -80,7 +80,7 @@ ul.bag:hover li.bag_right p{
 i.bag_left{
 	width: 80px;
     height: 46px;
-    background: url(../images/bag.png)no-repeat 29px 6px #16aae1;
+    background: url(http://tymson.pl/sklep/images/bag.png)no-repeat 29px 6px #16aae1;
     float: left;
     border-right: 1px solid #fff;
 }
@@ -429,25 +429,25 @@ h4.top {
   height: 46px;
   width: 46px;
   display: block;
-  background: url(../images/soc_icons.png);
+  background: url(http://tymson.pl/sklep/images/soc_icons.png);
 }
 .social-icons li a:hover{
 	opacity:0.8;
 }
 .social-icons li:nth-child(1) a {
-  background: url(../images/soc_icons.png) 0% 0%;
+  background: url(http://tymson.pl/sklep/images/soc_icons.png) 0% 0%;
 }
 .social-icons li:nth-child(2) a {
-  background: url(../images/soc_icons.png) 25% 0%;
+  background: url(http://tymson.pl/sklep/images/soc_icons.png) 25% 0%;
 }
 .social-icons li:nth-child(3) a {
-  background: url(../images/soc_icons.png) 50% 0%;
+  background: url(http://tymson.pl/sklep/images/soc_icons.png) 50% 0%;
 }
 .social-icons li:nth-child(4) a {
-  background: url(../images/soc_icons.png) 75% 0%;
+  background: url(http://tymson.pl/sklep/images/soc_icons.png) 75% 0%;
 }
 .social-icons li:nth-child(5) a {
-  background: url(../images/soc_icons.png) 100% 0%;
+  background: url(http://tymson.pl/sklep/images/soc_icons.png) 100% 0%;
 }
 .copy{
 	margin-top:3em;
@@ -505,7 +505,7 @@ h4.top {
 	padding: 0 0 20px;
 }
 .block-layered-nav li {
-	background: url("../images/arrow-menu1.png") no-repeat scroll 5px 9px;
+	background: url("http://tymson.pl/sklep/images/arrow-menu1.png") no-repeat scroll 5px 9px;
 	padding-left: 20px;
 	line-height: 25px;
 	color:#16aae1;
@@ -998,7 +998,7 @@ a.create:hover, .account-top input[type="submit"]:hover, .register-but form inpu
 }
 .checkbox input + i:after {
 	content: '';
-	background: url("../images/tick1.png") no-repeat 1px 2px;
+	background: url("http://tymson.pl/sklep/images/tick1.png") no-repeat 1px 2px;
 	top: -1px;
 	left: -1px;
 	width: 15px;
@@ -1136,11 +1136,11 @@ p.m_5 {
   width: 70%;
 }
 .search input[type="submit"] {
-  background: url('../images/search.png') no-repeat 18px 8px #16aae1;
+  background: url('http://tymson.pl/sklep/images/search.png') no-repeat 18px 8px #16aae1;
   padding: 9.5px 30px;
 }
 .search input[type="submit"]:hover {
-  background: url('../images/search.png') no-repeat 18px 8px #232756;
+  background: url('http://tymson.pl/sklep/images/search.png') no-repeat 18px 8px #232756;
 }
 .search {
   width: 65%;
@@ -1149,7 +1149,7 @@ p.m_5 {
 i.bag_left {
   width: 60px;
   height: 42px;
-  background: url(../images/bag.png)no-repeat 18px 4px #16aae1;
+  background: url(http://tymson.pl/sklep/images/bag.png)no-repeat 18px 4px #16aae1;
 }
 ul.bag li.bag_right {
   padding: 7.4px 8px;
@@ -1361,11 +1361,11 @@ a.btn1.btn6.btn-1.btn1-1b {
   width: 80%;
 }
 .search input[type="submit"] {
-  background: url('../images/search.png') no-repeat 12px 6px #16aae1;
+  background: url('http://tymson.pl/sklep/images/search.png') no-repeat 12px 6px #16aae1;
   padding: 8.5px 25px;
 }
 .search input[type="submit"]:hover {
-  background: url('../images/search.png') no-repeat 12px 6px #3083be;
+  background: url('http://tymson.pl/sklep/images/search.png') no-repeat 12px 6px #3083be;
 }
 .span_1 {
   padding: 0.7em 0;
@@ -1377,7 +1377,7 @@ a.btn1.btn6.btn-1.btn1-1b {
 i.bag_left {
   width: 45px;
   height: 40px;
-  background: url(../images/bag.png)no-repeat 11px 2px #16aae1;
+  background: url(http://tymson.pl/sklep/images/bag.png)no-repeat 11px 2px #16aae1;
 }
 ul.bag li.bag_right p {
   font: 500 13px/13px 'Raleway', sans-serif;
@@ -1434,11 +1434,11 @@ a.b-home {
   font-size: 12px;	
 }
 .search input[type="submit"] {
-  background: url('../images/search.png') no-repeat 6px 4px #16aae1;
+  background: url('http://tymson.pl/sklep/images/search.png') no-repeat 6px 4px #16aae1;
   padding: 6.5px 18px;
 }
 .search input[type="submit"]:hover{
-  background: url('../images/search.png') no-repeat 6px 4px #2e4ebe;
+  background: url('http://tymson.pl/sklep/images/search.png') no-repeat 6px 4px #2e4ebe;
 }
 .logo img {
   width: 130px;
@@ -1454,7 +1454,7 @@ a.b-home {
 i.bag_left {
   width: 35px;
   height: 35px;
-  background: url(../images/bag.png)no-repeat 5px 1px #16aae1;
+  background: url(http://tymson.pl/sklep/images/bag.png)no-repeat 5px 1px #16aae1;
 }
 ul.bag li.bag_right p {
   font: 500 12px/12px 'Raleway', sans-serif;
