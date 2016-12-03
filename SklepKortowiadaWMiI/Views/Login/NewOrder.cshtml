@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "NewOrder";
+}
+
+@model string[]
+
+<h2>Nowy student</h2>
+
+<div class="form-group col-md-12">
+    <label class="control-label col-md-2">Nr Indeksu</label>
+    <div class="col-md-5">
+        @Html.Editor("index", new { htmlAttributes = new { @class = "form-control" }, @value = Model[1] })
+    </div>
+</div>
+<div class="form-group col-md-12">
+    <label class="control-label col-md-2">Kod kreskowy</label>
+    <div class="col-md-5">
+        @Html.Editor("barcode", new { htmlAttributes = new { @class = "form-control" }, @value = Model[1] })
+    </div>
+</div>
+<div class="form-group col-md-12">
+    <label class="control-label col-md-2">Kod kreskowy</label>
+    <div class="col-md-5">
+        @Html.Editor("name", new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+<div class="form-group col-md-12">
+    <label class="control-label col-md-2">Kod kreskowy</label>
+    <div class="col-md-5">
+        @Html.Editor("secondname", new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+<div class="form-group col-md-12">
+    <label class="control-label col-md-2">Kod kreskowy</label>
+    <div class="col-md-5">
+        @Html.Editor("faculty", new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+<div class="form-group col-md-12">
+    <label class="control-label col-md-2">Kod kreskowy</label>
+    <div class="col-md-5">
+        @Html.Editor("mode", new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>

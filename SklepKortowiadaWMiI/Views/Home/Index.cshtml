@@ -12,7 +12,6 @@
                 @using (Html.BeginForm("AddToCart", "Cart"))
                 {
                     @Html.Hidden("productId", p.Id)
-                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
                     @Html.Hidden("quantity", 1)
                     <input type="submit" class="btn btn-success" value="Dodaj" />
                 }

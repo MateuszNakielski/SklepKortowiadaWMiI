@@ -4,12 +4,33 @@
 @{
     ViewBag.Title = "Index";
 }
+@{int i = 0;}
+
+@if (Session["Confirmed"] != null && (bool)Session["Confirmed"])
+{
+    <p>Zatwierdzono zamowienie</p>
+}
+else
+{
+    <p>Nie zatwierdzono zamowienia</p>
+}
 
 @foreach(var line in Model.Lines)
 {
-    <ul>
-        <li>@line.Product.Name</li>
-    </ul>
+    <div class="product">
+        <img src="@line.Product.PictureUrl" />
+        <h2>@line.Product.Name</h2>
+        <h3>@line.Product.Price zł</h3>
+        @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                {
+            @Html.Hidden("number", i++)
+            <input type="submit" class="btn btn-danger" value="Usuń z koszyka" />
+        }
+    </div>
 }
 
+@using (Html.BeginForm("ConfirmOrder", "Cart"))
+{
+    <input type="submit" class="btn btn-success" value="Zatwierdź" />
+}
 

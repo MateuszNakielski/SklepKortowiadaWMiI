@@ -23,6 +23,10 @@ namespace SklepKortowiadaWMiI.Services.Implementations
             Order order = db.Orders.Find(orderId);
             if (order == null)
                 return null;
+            if (db.OrderDetails.Where(o => o.OrderId == orderId).Count() == 1)
+                od.Number = 1;
+            else
+                od.Number = db.OrderDetails.Where(o => o.OrderId == orderId).Max(o => o.Number) + 1;
             db.OrderDetails.Add(od);
             db.SaveChanges();
 
@@ -43,6 +47,7 @@ namespace SklepKortowiadaWMiI.Services.Implementations
         {
             OrderDetail orderDetail = db.OrderDetails.Where(o => o.OrderId == orderId).Where(o => o.Number == n).Single();
             db.OrderDetails.Remove(orderDetail);
+            db.SaveChanges();
             return db.Orders.Find(orderId);
         }
 
@@ -68,8 +73,16 @@ namespace SklepKortowiadaWMiI.Services.Implementations
 
         public Order GetOneOrderByBarCode(string b)
         {
-            return db.Orders.Where(o => o.Barcode.Equals(b)).First();
+            return db.Orders.Where(o => o.Barcode.Equals(b)).FirstOrDefault();
             
+        }
+
+        public void ClearOrderDetail(int id)
+        {
+            List<OrderDetail> list = db.OrderDetails.Where(o => o.OrderId == id).ToList();
+            foreach (var x in list)
+                db.OrderDetails.Remove(x);
+            db.SaveChanges();
         }
     }
 }

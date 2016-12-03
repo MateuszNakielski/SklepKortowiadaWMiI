@@ -74,7 +74,7 @@ namespace SklepKortowiadaWMiI.Controllers
             return Ok(OrderDTO.ToOrderDTO(order));
         }
 
-        // DELETE: api/Orders1/5
+        [HttpDelete]
         [ResponseType(typeof(OrderDTO))]
         public IHttpActionResult DeleteOrder(int id)
         {
@@ -96,7 +96,7 @@ namespace SklepKortowiadaWMiI.Controllers
         }
 
         [Route("api/Orders/{id}")]
-        [HttpGet]
+        [HttpDelete]
         [ResponseType(typeof(OrderDTO))]
         public IHttpActionResult DeleteDetailOrder(int id, int number)
         {

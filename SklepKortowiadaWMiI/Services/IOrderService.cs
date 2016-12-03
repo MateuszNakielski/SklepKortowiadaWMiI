@@ -17,5 +17,6 @@ namespace SklepKortowiadaWMiI.Services
         Order AddOrderDetail(int orderId, OrderDetail od);
         Order DeleteOrderDetailByNumber(int orderId, int n);
         Order GetOneOrderByBarCode(string b);
+        void ClearOrderDetail(int id);
     }
 }

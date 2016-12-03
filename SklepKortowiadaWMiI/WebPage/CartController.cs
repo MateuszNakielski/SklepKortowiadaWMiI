@@ -1,10 +1,6 @@
 ﻿using SklepKortowiadaWMiI.Models;
 using SklepKortowiadaWMiI.Services;
 using SklepKortowiadaWMiI.WebModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SklepKortowiadaWMiI.WebPage
@@ -24,12 +20,26 @@ namespace SklepKortowiadaWMiI.WebPage
         {
             Product product = productService.GetOneProductById(productId);
             getCart().AddItem(product, quantity);
+            Session["Confirmed"] = false;
             return RedirectToAction("Index", new { returnUrl });
+        }
+
+        public RedirectToRouteResult RemoveFromCart(int number)
+        {
+            getCart().RemoveItem(number);
+            Session["Confirmed"] = false;
+            return RedirectToAction("Index");
         }
 
         public ActionResult Index()
         {
             return View(getCart());
+        }
+
+        public RedirectToRouteResult ConfirmOrder()
+        {
+            Session["Confirmed"] = true;
+            return RedirectToAction("Index");
         }
 
         private Cart getCart()
