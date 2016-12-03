@@ -23,7 +23,7 @@ namespace SklepKortowiadaWMiI.Services.Implementations
             Order order = db.Orders.Find(orderId);
             if (order == null)
                 return null;
-            if (db.OrderDetails.Where(o => o.OrderId == orderId).Count() == 1)
+            if (db.OrderDetails.Where(o => o.OrderId == orderId).Count() == 0)
                 od.Number = 1;
             else
                 od.Number = db.OrderDetails.Where(o => o.OrderId == orderId).Max(o => o.Number) + 1;
@@ -79,10 +79,15 @@ namespace SklepKortowiadaWMiI.Services.Implementations
 
         public void ClearOrderDetail(int id)
         {
-            List<OrderDetail> list = db.OrderDetails.Where(o => o.OrderId == id).ToList();
+            List<OrderDetail> list = GetOrderDetailsById(id).ToList();
             foreach (var x in list)
                 db.OrderDetails.Remove(x);
             db.SaveChanges();
+        }
+
+        public IEnumerable<OrderDetail> GetOrderDetailsById(int id)
+        {
+            return db.OrderDetails.Where(o => o.OrderId == id).ToList();
         }
     }
 }

@@ -19,39 +19,40 @@ namespace SklepKortowiadaWMiI.WebPage
         public RedirectToRouteResult AddToCart(int productId, int quantity, string returnUrl)
         {
             Product product = productService.GetOneProductById(productId);
-            getCart().AddItem(product, quantity);
+            ((Cart)Session["Cart"]).AddItem(product, quantity);
             Session["Confirmed"] = false;
             return RedirectToAction("Index", new { returnUrl });
         }
 
         public RedirectToRouteResult RemoveFromCart(int number)
         {
-            getCart().RemoveItem(number);
+            ((Cart)Session["Cart"]).RemoveItem(number);
             Session["Confirmed"] = false;
             return RedirectToAction("Index");
         }
 
         public ActionResult Index()
         {
-            return View(getCart());
+            return View(Session["Cart"]);
         }
 
         public RedirectToRouteResult ConfirmOrder()
         {
             Session["Confirmed"] = true;
+            Cart cart = Session["cart"] as Cart;
+            Order order = Session["order"] as Order;
+            orderService.ClearOrderDetail(order.Id);
+            foreach(var c in cart.Lines)
+            {
+                OrderDetail od = new OrderDetail
+                {
+                    OrderId = order.Id,
+                    ProductId = c.Product.Id,
+                    Quantity = c.Quantity
+                };
+                orderService.AddOrderDetail(order.Id, od);
+            }
             return RedirectToAction("Index");
         }
-
-        private Cart getCart()
-        {
-            Cart cart = Session["Cart"] as Cart;
-            if (cart == null)
-            {
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
-            return cart;
-        }
-
     }
 }
