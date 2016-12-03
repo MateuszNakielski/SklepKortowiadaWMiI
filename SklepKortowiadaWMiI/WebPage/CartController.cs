@@ -18,6 +18,8 @@ namespace SklepKortowiadaWMiI.WebPage
 
         public RedirectToRouteResult AddToCart(int productId, int quantity, string returnUrl)
         {
+            if (Session["order"] == null)
+                return RedirectToAction("LoginForm", "Login");
             Product product = productService.GetOneProductById(productId);
             ((Cart)Session["Cart"]).AddItem(product, quantity);
             Session["Confirmed"] = false;
@@ -33,6 +35,8 @@ namespace SklepKortowiadaWMiI.WebPage
 
         public ActionResult Index()
         {
+            if(Session["order"] == null)
+                return RedirectToAction("LoginForm", "Login");
             return View(Session["Cart"]);
         }
 
