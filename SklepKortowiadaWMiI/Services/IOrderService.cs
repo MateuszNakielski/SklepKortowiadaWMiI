@@ -9,15 +9,15 @@ namespace SklepKortowiadaWMiI.Services
 {
     public interface IOrderService
     {
-        IEnumerable<Order> GetAllOrders();
-        Order GetOneOrderById(int id);
-        Order AddOrder(Order o);
-        Order DeleteOrderById(int id);
-        Order UpdateOrderById(int id, Order o);
-        Order AddOrderDetail(int orderId, OrderDetail od);
-        Order DeleteOrderDetailByNumber(int orderId, int n);
-        Order GetOneOrderByBarCode(string b);
-        IEnumerable<OrderDetail> GetOrderDetailsById(int id);
-        void ClearOrderDetail(int id);
+        IEnumerable<Order> GetAllOrders();                      //Pobranie wszystkich zamowien
+        Order GetOneOrderById(int id);                          //Pobranie jednego zamiowienia wg identyfikatora
+        Order AddOrder(Order o);                                //Dodanie zamówienia
+        Order DeleteOrderById(int id);                          //Usunięcie zamówienia wg identyfikatora
+        Order UpdateOrderById(int id, Order o);                 //Aktualizacja zamówienia wg identyfikatora
+        Order AddOrderDetail(int orderId, OrderDetail od);      //Dodanie elementu zamówienia
+        Order DeleteOrderDetailByNumber(int orderId, int n);    //Usunięcie elementu zamówienia wg identyfikatora zamówienia i numeru elementu zamówienia
+        Order GetOneOrderByBarCode(string b);                   //Pobranie jednego zamówienia wg kodu kreskowego
+        IEnumerable<OrderDetail> GetOrderDetailsById(int id);   //Pobranie listy elementów zamowienia danego zamówienia wg identyfikatora
+        void ClearOrderDetail(int id);                          //Czyszczenie listy elementów zamówienia wg identyfikatora
     }
 }

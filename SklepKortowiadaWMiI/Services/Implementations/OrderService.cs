@@ -64,9 +64,16 @@ namespace SklepKortowiadaWMiI.Services.Implementations
         public Order UpdateOrderById(int id, Order o)
         {
             Order newOrder = db.Orders.Find(id);
-            if (newOrder ==null || newOrder.Id != o.Id)
+            if (newOrder == null || newOrder.Id != o.Id)
                 return null;
-            db.Entry(o).State = EntityState.Modified;
+            newOrder.Name = o.Name;
+            newOrder.SecondName = o.SecondName;
+            newOrder.StudentNumber = o.StudentNumber;
+            newOrder.Mode = o.Mode;
+            newOrder.Faculty = o.Faculty;
+            newOrder.Paid = o.Paid;
+            newOrder.Received = o.Received;
+            db.Entry(newOrder).State = EntityState.Modified;
             db.SaveChanges();
             return o;
         }

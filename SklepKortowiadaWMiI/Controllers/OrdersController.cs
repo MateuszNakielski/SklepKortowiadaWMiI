@@ -1,8 +1,5 @@
 ﻿using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using SklepKortowiadaWMiI.Models;
@@ -36,7 +33,8 @@ namespace SklepKortowiadaWMiI.Controllers
             }
             return Ok(OrderDTO.ToOrderDTO(order));
         }
-
+        [Route("api/Orders/{id}")]
+        [HttpPut]
         [ResponseType(typeof(OrderDTO))]
         public IHttpActionResult PutOrder(int id, OrderDTO o)
         {

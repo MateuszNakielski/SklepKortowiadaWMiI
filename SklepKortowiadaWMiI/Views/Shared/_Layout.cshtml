@@ -1,4 +1,5 @@
-﻿<!DOCTYPE HTML>
+﻿@using SklepKortowiadaWMiI.Models
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>Sklep RWSS WMiI | Strona główna</title>
@@ -48,7 +49,15 @@
                     </div>
                     <div class="register-info">
                         <ul>
-                            <li><a href="logowanie.html">Login</a></li>
+                            @if (Session["order"] == null)
+                            {
+                                <li><a href="/Login/LoginForm">Login</a></li>
+                            }
+                            else
+                            {
+                                <p>Twój numer indeksu: @((Order)Session["order"]).StudentNumber</p>
+                            }
+
                         </ul>
                     </div>
                     <div class="clearfix"> </div>
@@ -68,7 +77,7 @@
                             <input type="submit" value="">
                         </div>
                         <ul class="bag">
-                            <a href="koszyk.html"><i class="bag_left"> </i></a>
+                            <a href="/Cart"><i class="bag_left"> </i></a>
                             <div class="clearfix"> </div>
                         </ul>
                         <div class="clearfix"> </div>
