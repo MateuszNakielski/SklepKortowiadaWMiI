@@ -1,4 +1,5 @@
 ﻿@using SklepKortowiadaWMiI.Models
+@{ Order order = (Order)HttpContext.Current.Session["order"]; }
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -36,9 +37,9 @@
                 <div class="col-sm-9 h_menu4">
                     <ul class="megamenu skyblue">
                         <li class="active grid"><a class="color8" href="/">Strona główna</a></li>
-                        <li><a class="color6" href="męskie.html">Koszulki męskie</a></li>
-                        <li><a class="color6" href="404.html">Koszulki damskie</a></li>
-                        <li><a class="color6" href="404.html">Gadżety</a></li>
+                        <li><a class="color6" href="/Category?category=meskie">Koszulki męskie</a></li>
+                        <li><a class="color6" href="/Category?category=damskie">Koszulki damskie</a></li>
+                        <li><a class="color6" href="/Category?category=gadzet">Gadżety</a></li>
                         <li><a class="color6" href="kontakt.html">Kontakt</a></li>
                     </ul>
                 </div>
@@ -49,15 +50,17 @@
                     </div>
                     <div class="register-info">
                         <ul>
-                            @if (Session["order"] == null)
-                            {
-                                <li><a href="/Login/LoginForm">Login</a></li>
-                            }
-                            else
-                            {
-                                <p>Twój numer indeksu: @((Order)Session["order"]).StudentNumber</p>
-                            }
+                            <li>
+                                @if (Session["order"] == null)
+                                {
+                                    <a href="/Login/LoginForm">Login</a>
 
+                                }
+                                else
+                                {
+                                    <p>Twój numer indeksu: @order.StudentNumber</p>
+                                }
+                            </li>
                         </ul>
                     </div>
                     <div class="clearfix"> </div>
@@ -132,7 +135,7 @@
                             </form>
                         </div>
                         <div class="copy">
-                            <p><h6>© 2016 Styl <a href="http://w3layouts.com/">W3layouts</a> | Edycja: TT </h6></p>
+                            <p><h6>Projekt i wykonanie: Mateusz Nakielski i Tymoteusz Tyrajski</h6></p>
                         </div>
                     </div>
 

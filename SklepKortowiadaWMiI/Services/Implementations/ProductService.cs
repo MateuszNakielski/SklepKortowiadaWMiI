@@ -39,6 +39,11 @@ namespace SklepKortowiadaWMiI.Services.Implementations
             return db.Products.Find(id);
         }
 
+        public IEnumerable<Product> GetProductsByCategory(string category)
+        {
+            return db.Products.Where(p => p.Category.Equals(category)).AsEnumerable<Product>();
+        }
+
         public Product UpdateProductById(int id, Product p)
         {
             

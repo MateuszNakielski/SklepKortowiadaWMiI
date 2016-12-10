@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@using SklepKortowiadaWMiI.Models;
+@model List<Product>
+
+@foreach (var p in Model)
+{
+    <div class="product">
+        <img src="@p.PictureUrl" />
+        <h2>@p.Name</h2>
+        <h3>@p.Price zł</h3>
+        @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+            @Html.Hidden("productId", p.Id)
+            @Html.Hidden("quantity", 1)
+            <input type="submit" class="btn btn-success" value="Dodaj do koszyka" />
+        }
+    </div>
+}

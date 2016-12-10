@@ -146,10 +146,10 @@ ul.bag li.bag_right p{
   font-weight: 500;
 }
 .drop_buttons{
-  float: left;
   width: 60%;
   margin-right: 10%;
   padding-top:2px;
+  color:#fff;
 }
 .drop-down-in {
   margin: 0;
@@ -160,6 +160,7 @@ ul.bag li.bag_right p{
   width:29%;
 }
 .register-info ul{
+   color:#fff;
    padding:0;
    margin:0;
    list-style:none;

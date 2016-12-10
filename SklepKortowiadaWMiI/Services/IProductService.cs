@@ -14,6 +14,7 @@ namespace SklepKortowiadaWMiI.Services
         Product AddProduct(Product p);
         Product DeleteProductById(int id);
         Product UpdateProductById(int id, Product product);
+        IEnumerable<Product> GetProductsByCategory(string category);
     }
 
 
