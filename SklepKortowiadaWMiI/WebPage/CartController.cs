@@ -35,7 +35,7 @@ namespace SklepKortowiadaWMiI.WebPage
 
         public ActionResult Index()
         {
-            if(Session["order"] == null)
+            if(Session["Cart"] == null)
                 return RedirectToAction("LoginForm", "Login");
             return View(Session["Cart"]);
         }

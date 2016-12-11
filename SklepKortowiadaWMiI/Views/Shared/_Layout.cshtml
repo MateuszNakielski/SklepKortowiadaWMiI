@@ -1,5 +1,7 @@
 ﻿@using SklepKortowiadaWMiI.Models
+@using SklepKortowiadaWMiI.WebModels       
 @{ Order order = (Order)HttpContext.Current.Session["order"]; }
+@{ Cart cart = (Cart)HttpContext.Current.Session["cart"]; }
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -54,6 +56,7 @@
                                 @if (Session["order"] == null)
                                 {
                                     <a href="/Login/LoginForm">Logowanie</a>
+                                    <a href="/Login/NewOrder">Rejestracja</a>
 
                                 }
                                 else
@@ -81,6 +84,13 @@
                         </div>
                         <ul class="bag">
                             <a href="/Cart"><i class="bag_left"> </i></a>
+                            @if (Session["cart"] == null)
+                            {
+                                <li class="bag_right"><p>0,00 zł</p></li>
+                            }else
+                            {
+                                 <li class="bag_right"><p>@cart.TotalValue() zł</p></li>
+                            }
                             <div class="clearfix"> </div>
                         </ul>
                         <div class="clearfix"> </div>

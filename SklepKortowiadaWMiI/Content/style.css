@@ -131,6 +131,7 @@ ul.bag li.bag_right p{
 .header-top-right {
   float: right;
   margin-top:26px;
+  text-align:right;
 }
 .drop-down {
   float: left;
@@ -150,6 +151,7 @@ ul.bag li.bag_right p{
   margin-right: 10%;
   padding-top:2px;
   color:#fff;
+
 }
 .drop-down-in {
   margin: 0;
@@ -158,6 +160,7 @@ ul.bag li.bag_right p{
 .rigister-info {
   float: left;
   width:29%;
+  
 }
 .register-info ul{
    color:#fff;
@@ -1628,4 +1631,9 @@ h4.head_single {
     .product{
         height:auto;
     }
+}
+.infofield{
+    text-align:center;
+    margin:10px auto;
+    font-size:large;
 }

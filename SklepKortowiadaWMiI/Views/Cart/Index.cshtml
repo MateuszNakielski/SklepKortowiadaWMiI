@@ -10,11 +10,11 @@
 
         @if (Session["Confirmed"] != null && (bool)Session["Confirmed"])
         {
-            <div class="bg-success text-success">Zatwierdzono zamowienie</div>
+            <div class="bg-success text-success infofield">Zatwierdzono zamowienie</div>
         }
         else
         {
-            <div class="bg-danger text-danger">Nie zatwierdzono zamowienia</div>
+            <div class="bg-danger text-danger infofield">Nie zatwierdzono zamowienia</div>
         }
 
         @foreach (var line in Model.Lines)
