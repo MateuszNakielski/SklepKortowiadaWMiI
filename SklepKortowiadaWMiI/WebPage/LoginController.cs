@@ -30,13 +30,13 @@ namespace SklepKortowiadaWMiI.WebPage
         public RedirectToRouteResult LoginAction(string barcode, string index)
         {
             Order order = orderService.GetOneOrderByBarCode(barcode);
-
+            bool error = true;
             if (order == null)
-                return RedirectToAction("NewOrder", "Login", new { barcode, index });
+                return RedirectToAction("LoginForm", "Login", new { error });
             else
-            {
+            {           
                 if (order.StudentNumber != index)
-                    return RedirectToAction("Index", "Login", true);
+                    return RedirectToAction("LoginForm", "Login", new { error });
             }
             Session["order"] = order;
             InitCart();
@@ -45,6 +45,9 @@ namespace SklepKortowiadaWMiI.WebPage
 
         public RedirectToRouteResult NewOrderAction(string barcode, string index, string name, string secondname, string faculty, string mode)
         {
+            bool error = true;
+            if(orderService.GetOneOrderByBarCode(barcode) != null)
+                return RedirectToAction("NewOrder", "Login", new { error });
             Order order = new Order
             {
                 Barcode = barcode,
@@ -55,14 +58,14 @@ namespace SklepKortowiadaWMiI.WebPage
                 StudentNumber = index
             };
             orderService.AddOrder(order);
-            
+            Session["order"] = order;
+            InitCart();
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult NewOrder(string barcode, string index)
+        public ActionResult NewOrder(bool error = false)
         {
-            string[] dane = { barcode, index };
-            return View(dane);
+            return View(error);
         }
 
         private void InitCart()

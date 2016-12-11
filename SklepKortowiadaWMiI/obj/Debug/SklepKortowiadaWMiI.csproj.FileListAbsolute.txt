@@ -151,7 +151,6 @@ C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaW
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\bin\System.Web.Http.WebHost.xml
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Debug\SklepKortowiadaWMiI.dll
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Debug\SklepKortowiadaWMiI.pdb
-C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Debug\SklepKortowiadaWMiI.csprojResolveAssemblyReference.cache
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\bin\Ninject.dll
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\bin\Ninject.Web.Common.dll
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\bin\Ninject.Web.Mvc.dll
@@ -165,3 +164,4 @@ C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaW
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\bin\Ninject.Web.WebApi.WebHost.xml
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Debug\SklepKortowiadaWMiI.Migrations.initial.resources
 C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Debug\SklepKortowiadaWMiI.csproj.GenerateResource.Cache
+C:\Users\mtnak\Documents\GitHubVisualStudio\SklepKortowiadaWMiI\SklepKortowiadaWMiI\obj\Debug\SklepKortowiadaWMiI.csprojResolveAssemblyReference.cache

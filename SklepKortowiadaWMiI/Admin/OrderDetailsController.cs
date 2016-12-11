@@ -15,6 +15,7 @@ namespace SklepKortowiadaWMiI.Admin
         private SklepKortowiadaWMiIContext db = new SklepKortowiadaWMiIContext();
 
         // GET: OrderDetails
+        // Główna strona administracji elementami zamówienia
         public ActionResult Index()
         {
             var orderDetails = db.OrderDetails.Include(o => o.Order).Include(o => o.Product);
@@ -22,6 +23,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // GET: OrderDetails/Details/5
+        // Szczegóły elementu zamówienia wg Id
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // GET: OrderDetails/Create
+        // Utworzenie nowego elementu zamówienia
         public ActionResult Create()
         {
             ViewBag.OrderId = new SelectList(db.Orders, "Id", "Name");
@@ -45,8 +48,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // POST: OrderDetails/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Logika utworzennia nowego elementu zamówienia
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Number,Quantity,OrderId,ProductId")] OrderDetail orderDetail)
@@ -64,6 +66,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // GET: OrderDetails/Edit/5
+        // Edycja zamóienia wg id
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,8 +84,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // POST: OrderDetails/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Logika edycji zamówienia wg id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Number,Quantity,OrderId,ProductId")] OrderDetail orderDetail)
@@ -99,6 +101,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // GET: OrderDetails/Delete/5
+        //Usunięcie elementu zamówienia wg id
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -114,6 +117,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // POST: OrderDetails/Delete/5
+        // Logika usunięcia zamówienia wg id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

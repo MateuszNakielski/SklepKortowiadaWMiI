@@ -191,6 +191,7 @@
     <Compile Include="WebModels\Cart.cs" />
     <Compile Include="WebPage\CartController.cs" />
     <Compile Include="WebPage\CategoryController.cs" />
+    <Compile Include="WebPage\ContactController.cs" />
     <Compile Include="WebPage\HomeController.cs" />
     <Compile Include="WebPage\LoginController.cs" />
   </ItemGroup>
@@ -255,6 +256,7 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612100957424_initial.resx">

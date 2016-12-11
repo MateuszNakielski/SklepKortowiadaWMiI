@@ -5,32 +5,36 @@
     ViewBag.Title = "Index";
 }
 @{int i = 0;}
+<div class="content">
+    <div class="content_box">
 
-@if (Session["Confirmed"] != null && (bool)Session["Confirmed"])
-{
-    <p>Zatwierdzono zamowienie</p>
-}
-else
-{
-    <p>Nie zatwierdzono zamowienia</p>
-}
-
-@foreach(var line in Model.Lines)
-{
-    <div class="product">
-        <img src="@line.Product.PictureUrl" />
-        <h2>@line.Product.Name</h2>
-        <h3>@line.Product.Price zł</h3>
-        @using (Html.BeginForm("RemoveFromCart", "Cart"))
-                {
-            @Html.Hidden("number", i++)
-            <input type="submit" class="btn btn-danger" value="Usuń z koszyka" />
+        @if (Session["Confirmed"] != null && (bool)Session["Confirmed"])
+        {
+            <div class="bg-success text-success">Zatwierdzono zamowienie</div>
         }
-    </div>
-}
+        else
+        {
+            <div class="bg-danger text-danger">Nie zatwierdzono zamowienia</div>
+        }
 
-@using (Html.BeginForm("ConfirmOrder", "Cart"))
-{
-    <input type="submit" class="btn btn-success" value="Zatwierdź" />
-}
+        @foreach (var line in Model.Lines)
+        {
+            <div class="product">
+                <img src="@line.Product.PictureUrl" />
+                <h2>@line.Product.Name</h2>
+                <h3>@line.Product.Price zł</h3>
+                @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                {
+                    @Html.Hidden("number", i++)
+                    <input type="submit" class="btn btn-danger" value="Usuń z koszyka" />
+                }
+            </div>
+        }
+        <hr />
+        <h4>W sumie @Model.TotalValue() zl</h4>
+
+        @using (Html.BeginForm("ConfirmOrder", "Cart"))
+        {
+            <input type="submit" class="btn btn-success" value="Zatwierdź" />
+        }
 

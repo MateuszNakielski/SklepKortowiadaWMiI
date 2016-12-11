@@ -40,7 +40,7 @@
                         <li><a class="color6" href="/Category?category=meskie">Koszulki męskie</a></li>
                         <li><a class="color6" href="/Category?category=damskie">Koszulki damskie</a></li>
                         <li><a class="color6" href="/Category?category=gadzet">Gadżety</a></li>
-                        <li><a class="color6" href="kontakt.html">Kontakt</a></li>
+                        <li><a class="color6" href="Contact">Kontakt</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3 header-top-right">
@@ -53,7 +53,7 @@
                             <li>
                                 @if (Session["order"] == null)
                                 {
-                                    <a href="/Login/LoginForm">Login</a>
+                                    <a href="/Login/LoginForm">Logowanie</a>
 
                                 }
                                 else
@@ -88,30 +88,7 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <!--<div class="grid_1">
-                <div class="col-md-3 banner_left">
-                    <img src="http://tymson.pl/sklep/images/pic1.png" class="img-responsive" alt="" />
-                    <div class="banner_desc">
-                        <h1>Męska koszulka</h1>
-                        <h2>Kortowiada 2016</h2>
-                        <h5>25 zł</h5>
-                        <a href="produkt.html" class="btn1 btn4 btn-1 btn1-1b">Dodaj >></a>
-                    </div>
-                </div>
-                <div class="col-md-9 banner_right">
-                    <section class="slider">
-                        <div class="flexslider">
-                            <ul class="slides">
-                                <li><img src="http://tymson.pl/sklep/images/banner.jpg" alt="" /></li>
-                                <li><img src="http://tymson.pl/sklep/images/banner1.jpg" alt="" /></li>
-                            </ul>
-                        </div>
-                    </section>
-                </div>
-                <div class="clearfix"></div>
-            </div>-->
-            <div class="content">
-                <div class="content_box">
+            
 
                     @RenderBody()
 
@@ -120,15 +97,15 @@
                         <!-- start span_of_2 -->
                         <div class="contact_form">
                             <h2>Formularz kontaktowy</h2>
-                            <form>
+                            <form method="post" action="/Contact/Send">
                                 <div class="row_5">
-                                    <input type="text" class="text" value="Imię" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Imię';}">
-                                    <input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left:20px">
-                                    <input type="text" class="text" value="Temat" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Temat';}" style="margin-left:20px">
+                                    <input name="imie" type="text" class="text" value="imie" onfocus=";" onblur="if (this.value == '') {this.value = 'Imię';}">
+                                    <input name="email" type="text" class="text" value="email" onfocus=";" onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left:20px">
+                                    <input name="temat" type="text" class="text" value="temat" onfocus=";" onblur="if (this.value == '') {this.value = 'Temat';}" style="margin-left:20px">
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="row_6">
-                                    <textarea value="Wiadomość:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Wiadomość';}">Wiadomość:</textarea>
+                                    <textarea name="content" value="Wiadomość:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Wiadomość';}">Wiadomość:</textarea>
                                 </div>
                                 <input name="submit" type="submit" id="submit" value="Wyślij wiadomość">
                                 <div class="clearfix"></div>

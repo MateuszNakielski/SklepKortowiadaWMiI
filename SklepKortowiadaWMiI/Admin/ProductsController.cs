@@ -15,12 +15,14 @@ namespace SklepKortowiadaWMiI.Admin
         private SklepKortowiadaWMiIContext db = new SklepKortowiadaWMiIContext();
 
         // GET: Products
+        //Strona glowna administracji produktami
         public ActionResult Index()
         {
             return View(db.Products.ToList());
         }
 
         // GET: Products/Details/5
+        //Szczegoly produktu wg id
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,14 +38,14 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // GET: Products/Create
+        //Utworzenie produktu
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Logika utworzenia produktu
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description,Price,PictureUrl,Category")] Product product)
@@ -59,6 +61,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // GET: Products/Edit/5
+        // Edycja produktu wg id
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,8 +77,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // POST: Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Logika edycji produktu wg id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Description,Price,PictureUrl,Category")] Product product)
@@ -90,6 +92,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // GET: Products/Delete/5
+        // Usuniecie produktu wg id
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,6 +108,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // POST: Products/Delete/5
+        // Logika utworzenia produktu wg id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

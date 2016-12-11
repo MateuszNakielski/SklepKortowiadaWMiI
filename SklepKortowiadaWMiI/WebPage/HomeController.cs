@@ -19,7 +19,7 @@ namespace SklepKortowiadaWMiI.WebPage
         // GET: Home
         public ActionResult Index()
         {
-            return View(productService.GetAllProducts().ToList<Product>());
+            return View(productService.GetAllProducts().Take(5).ToList<Product>());
         }
     }
 }

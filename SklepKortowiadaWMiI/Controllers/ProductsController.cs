@@ -11,6 +11,8 @@ using SklepKortowiadaWMiI.Services;
 
 namespace SklepKortowiadaWMiI.Controllers
 {
+    //Kontroler REST produktow
+    // dostep api/Products
     public class ProductsController : ApiController
     {
         IProductService productService;
@@ -20,11 +22,13 @@ namespace SklepKortowiadaWMiI.Controllers
             this.productService = productService;
         }
 
+        //Pobranie wszystkich produktow
         public IEnumerable<ProductDTO> GetProducts()
         {
             return productService.GetAllProducts().Select(p => ProductDTO.ToProductDTO(p));
         }
 
+        //Pobranie produktu wg id
         [ResponseType(typeof(ProductDTO))]
         public IHttpActionResult GetProduct(int id)
         {

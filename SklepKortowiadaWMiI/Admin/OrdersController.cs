@@ -15,12 +15,14 @@ namespace SklepKortowiadaWMiI.Admin
         private SklepKortowiadaWMiIContext db = new SklepKortowiadaWMiIContext();
 
         // GET: Orders
+        // Strona głowna administracji zamówieniami
         public ActionResult Index()
         {
             return View(db.Orders.ToList());
         }
 
         // GET: Orders/Details/5
+        // Szczególy zamowienia wg id
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,14 +38,14 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // GET: Orders/Create
+        // Utworz nowe zamowienie
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Orders/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Logika utworzenia zamowienia
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Paid,Received,Name,SecondName,StudentNumber,Barcode,Faculty,Mode")] Order order)
@@ -59,6 +61,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // GET: Orders/Edit/5
+        // Edycja zamowienia wg id
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,8 +77,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // POST: Orders/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Logika edycji zamowienie wg id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Paid,Received,Name,SecondName,StudentNumber,Barcode,Faculty,Mode")] Order order)
@@ -90,6 +92,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // GET: Orders/Delete/5
+        // Usuniecie zamowienia wg id
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,6 +108,7 @@ namespace SklepKortowiadaWMiI.Admin
         }
 
         // POST: Orders/Delete/5
+        // Logika usuniecia zamowienia wg id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

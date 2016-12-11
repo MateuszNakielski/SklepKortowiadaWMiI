@@ -1,24 +1,53 @@
 ﻿@using SklepKortowiadaWMiI.Models
 
 @model List<Product>
-
-<ul class="grid_2">
-    @foreach (var p in Model)
-    {
-            <li>
-                <img src="@p.PictureUrl" class="img-responsive" alt="" />
-                <span class="btn5">@p.Price zł</span>
-                <p>@p.Name</p>
-                @using (Html.BeginForm("AddToCart", "Cart"))
+<div class="grid_1">
+    <div class="col-md-3 banner_left">
+        <img src="http://tymson.pl/sklep/images/pic1.png" class="img-responsive" alt="" />
+        <div class="banner_desc">
+            <h1>Męska koszulka S</h1>
+            <h2>Kortowiada 2016</h2>
+            <h5>25 zł</h5>
+            @using (Html.BeginForm("AddToCart", "Cart"))
+            {
+                @Html.Hidden("productId", 1)
+                @Html.Hidden("quantity", 1)
+                <input type="submit" class="btn1 btn4 btn-1 btn1-1b" value="Dodaj" />
+            }
+        </div>
+    </div>
+    <div class="col-md-9 banner_right">
+        <section class="slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li><img src="http://tymson.pl/pliki/photo/slide1.png" alt="" /></li>
+                    <li><img src="http://tymson.pl/pliki/photo/slide2.png" alt="" /></li>
+                    <li><img src="http://tymson.pl/pliki/photo/slide3.png" alt="" /></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="content">
+    <div class="content_box">
+        <ul class="grid_2">
+            @foreach (var p in Model)
+            {
+                <li>
+                    <img src="@p.PictureUrl" class="img-responsive" alt="" />
+                    <span class="btn5">@p.Price zł</span>
+                    <p>@p.Name</p>
+                    @using (Html.BeginForm("AddToCart", "Cart"))
                 {
-                    @Html.Hidden("productId", p.Id)
-                    @Html.Hidden("quantity", 1)
-                    <input type="submit" class="btn btn-success" value="Dodaj" />
-                }
-            </li>
-    }
-    
-    
-    <div class="clearfix"> </div>
-</ul>
-<div class="clearfix"></div>
+                        @Html.Hidden("productId", p.Id)
+                        @Html.Hidden("quantity", 1)
+                        <input type="submit" class="btn btn-success" value="Dodaj" />
+                    }
+                </li>
+            }
+
+
+            <div class="clearfix"> </div>
+        </ul>
+        <div class="clearfix"></div>

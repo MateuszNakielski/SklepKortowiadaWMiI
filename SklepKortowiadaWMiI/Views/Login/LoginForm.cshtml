@@ -3,20 +3,31 @@
     ViewBag.Title = "LoginForm";
 }
 
-<h2>Wpisz swoje dane</h2>
-@using (Html.BeginForm("LoginAction", "Login"))
-{   <div class="form-group col-md-12">
-        <label class="control-label col-md-2">Nr Indeksu</label>
-        <div class="col-md-5">
-            @Html.Editor("index", new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-    <div class="form-group col-md-12" >
-        <label class="control-label col-md-2">Kod kreskowy</label>
-        <div class="col-md-5">
-            @Html.Editor("barcode", new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-    <input type="submit" class="btn btn-info" value="Wprowadź" />
-}
+@model bool
+<div class="content">
+    <div class="content_box">
+        <h2>Wpisz swoje dane</h2>
 
+        @if (Model == true)
+        {
+            <div class="text-danger bg-danger">Błędny numer indeksu i/lub kod kreskowy</div>
+        }
+            
+
+        @using (Html.BeginForm("LoginAction", "Login"))
+        {   <div class="form-group col-md-12">
+            <label class="control-label col-md-2">Nr Indeksu</label>
+            <div class="col-md-5">
+                @Html.Editor("index", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-2">Kod kreskowy</label>
+            <div class="col-md-5">
+                @Html.Editor("barcode", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <input type="submit" class="btn btn-info" value="Wprowadź" />
+        }
+
+        <a href="/Login/NewOrder">Załóż konto</a>

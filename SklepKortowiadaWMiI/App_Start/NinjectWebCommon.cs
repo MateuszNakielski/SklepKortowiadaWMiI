@@ -11,6 +11,7 @@ namespace SklepKortowiadaWMiI.App_Start
     using Ninject;
     using Ninject.Web.Common;
 
+    // Klasa konfiguracyjna ninject
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model bool
+
+
+<div class="content">
+    <div class="content_box">
+
+        @if (Model != null && Model == true)
+        {
+            <div class="bg-success text-success">Wysłano pomyślnie</div>
+        }
+

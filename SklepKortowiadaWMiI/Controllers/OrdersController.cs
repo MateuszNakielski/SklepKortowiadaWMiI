@@ -9,6 +9,8 @@ using SklepKortowiadaWMiI.Services;
 
 namespace SklepKortowiadaWMiI.Controllers
 {
+    //Kontroler REST zamowien
+    // dostep: /api/Orders
     public class OrdersController : ApiController
     {
         IOrderService orderService;
@@ -17,12 +19,13 @@ namespace SklepKortowiadaWMiI.Controllers
         {
             this.orderService = orderService;
         }
-
+        //Pobranie wszystkich zamowien (metoda get)
         public IEnumerable<OrderDTO> GetOrders()
         {
             return orderService.GetAllOrders().Select(o => OrderDTO.ToOrderDTO(o));
         }
 
+        //Pobranie zamowienia wg id
         [ResponseType(typeof(OrderDTO))]
         public IHttpActionResult GetOrder(int id)
         {
@@ -33,6 +36,8 @@ namespace SklepKortowiadaWMiI.Controllers
             }
             return Ok(OrderDTO.ToOrderDTO(order));
         }
+
+        //Aktualizacja zamowienia wg id
         [Route("api/Orders/{id}")]
         [HttpPut]
         [ResponseType(typeof(OrderDTO))]
@@ -48,6 +53,7 @@ namespace SklepKortowiadaWMiI.Controllers
             return Ok(OrderDTO.ToOrderDTO(order));
         }
 
+        //Dodanie zamowienia
         // POST: api/Orders1
         [ResponseType(typeof(OrderDTO))]
         public IHttpActionResult PostOrder(OrderDTO o)
@@ -59,6 +65,8 @@ namespace SklepKortowiadaWMiI.Controllers
             Order order = orderService.AddOrder(OrderDTO.FromOrderDTO(o));
             return Ok(OrderDTO.ToOrderDTO(order));
         }
+
+        //Dodanie elementu do zamowienia wg id
         [Route("api/Orders/{id}")]
         [HttpPost]
         [ResponseType(typeof(OrderDTO))]
@@ -72,6 +80,7 @@ namespace SklepKortowiadaWMiI.Controllers
             return Ok(OrderDTO.ToOrderDTO(order));
         }
 
+        //Usuniecie zamowienia wg id
         [HttpDelete]
         [ResponseType(typeof(OrderDTO))]
         public IHttpActionResult DeleteOrder(int id)
@@ -82,6 +91,7 @@ namespace SklepKortowiadaWMiI.Controllers
             return Ok(OrderDTO.ToOrderDTO(order));
         }
 
+        //Pobranie zamowienia wg kodu kreskowego
         [Route("api/Orders/{barCode}")]
         [HttpGet]
         [ResponseType(typeof(OrderDTO))]
@@ -93,6 +103,7 @@ namespace SklepKortowiadaWMiI.Controllers
             return Ok(OrderDTO.ToOrderDTO(order));
         }
 
+        //Usuniecie elementu wg numeru z zamowienia wg id
         [Route("api/Orders/{id}")]
         [HttpDelete]
         [ResponseType(typeof(OrderDTO))]
